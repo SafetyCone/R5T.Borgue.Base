@@ -17,5 +17,8 @@ namespace R5T.Borgue
         IEnumerable<Catchment> GetAllContainingPoint(LngLat lngLat);
 
         void Delete(CatchmentIdentity identity);
+
+        void SetName(CatchmentIdentity identity, string name);
+        string GetName(CatchmentIdentity identity);
     }
 }

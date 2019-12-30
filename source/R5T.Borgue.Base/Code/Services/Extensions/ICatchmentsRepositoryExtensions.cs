@@ -21,5 +21,11 @@ namespace R5T.Borgue
 
             return geography.Identity;
         }
+
+        public static Catchment Get(this ICatchmentsRepository repository, Guid catchmentIdentity)
+        {
+            var output = repository.Get(new CatchmentIdentity(catchmentIdentity));
+            return output;
+        }
     }
 }

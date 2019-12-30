@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using R5T.Corcyra;
 
@@ -18,7 +19,10 @@ namespace R5T.Borgue
 
         void Delete(CatchmentIdentity identity);
 
-        void SetName(CatchmentIdentity identity, string name);
-        string GetName(CatchmentIdentity identity);
+        Task SetName(CatchmentIdentity identity, string name);
+        Task<string> GetName(CatchmentIdentity identity);
+
+        Task SetBoundary(CatchmentIdentity identity, IEnumerable<LngLat> boundaryVertices);
+        Task<IEnumerable<LngLat>> GetBoundary(CatchmentIdentity identity);
     }
 }

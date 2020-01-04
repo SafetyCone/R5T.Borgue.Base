@@ -8,23 +8,29 @@ namespace R5T.Borgue
 {
     public static class ICatchmentsRepositoryExtensions
     {
-        public static CatchmentIdentity Add(this ICatchmentsRepository repository, IEnumerable<LngLat> vertices)
+        public static CatchmentIdentity Add(this ICatchmentsRepository repository, string name, IEnumerable<LngLat> vertices)
         {
-            var geography = new Catchment()
+            var catchment = new Catchment()
             {
                 Identity = CatchmentIdentity.New(),
+                Name = name,
             };
 
-            geography.Boundary.AddRange(vertices);
+            catchment.Boundary.AddRange(vertices);
 
-            repository.Add(geography);
+            repository.Add(catchment);
 
-            return geography.Identity;
+            return catchment.Identity;
         }
 
-        public static Catchment Get(this ICatchmentsRepository repository, Guid catchmentIdentity)
+        public static void Delete(this ICatchmentsRepository repository, Guid catchmentIdentityValue)
         {
-            var output = repository.Get(new CatchmentIdentity(catchmentIdentity));
+            repository.Delete(CatchmentIdentity.From(catchmentIdentityValue));
+        }
+
+        public static Catchment Get(this ICatchmentsRepository repository, Guid catchmentIdentityValue)
+        {
+            var output = repository.Get(CatchmentIdentity.From(catchmentIdentityValue));
             return output;
         }
     }

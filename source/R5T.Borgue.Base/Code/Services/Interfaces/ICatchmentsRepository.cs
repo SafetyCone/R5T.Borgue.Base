@@ -9,15 +9,15 @@ namespace R5T.Borgue
 {
     public interface ICatchmentsRepository
     {
-        void Add(Catchment geography);
+        Task Add(Catchment geography);
 
-        bool Exists(CatchmentIdentity identity);
+        Task<bool> Exists(CatchmentIdentity identity);
 
-        Catchment Get(CatchmentIdentity identity);
-        IEnumerable<Catchment> GetAll();
-        IEnumerable<Catchment> GetAllContainingPoint(LngLat lngLat);
+        Task<Catchment> Get(CatchmentIdentity identity);
+        Task<IEnumerable<Catchment>> GetAll();
+        Task<IEnumerable<Catchment>> GetAllContainingPoint(LngLat lngLat);
 
-        void Delete(CatchmentIdentity identity);
+        Task Delete(CatchmentIdentity identity);
 
         Task SetName(CatchmentIdentity identity, string name);
         Task<string> GetName(CatchmentIdentity identity);

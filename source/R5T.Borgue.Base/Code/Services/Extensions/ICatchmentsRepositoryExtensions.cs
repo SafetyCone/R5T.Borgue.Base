@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using R5T.Corcyra;
 
@@ -8,30 +9,36 @@ namespace R5T.Borgue
 {
     public static class ICatchmentsRepositoryExtensions
     {
-        public static CatchmentIdentity Add(this ICatchmentsRepository repository, string name, IEnumerable<LngLat> vertices)
+        public static async Task<CatchmentIdentity> Add(this ICatchmentsRepository repository, string name, IEnumerable<LngLat> vertices)
         {
+            var catchmentIdentity = CatchmentIdentity.New();
+
             var catchment = new Catchment()
             {
-                Identity = CatchmentIdentity.New(),
+                Identity = catchmentIdentity,
                 Name = name,
             };
 
             catchment.Boundary.AddRange(vertices);
 
-            repository.Add(catchment);
+            await repository.Add(catchment);
 
-            return catchment.Identity;
+            return catchmentIdentity;
         }
 
-        public static void Delete(this ICatchmentsRepository repository, Guid catchmentIdentityValue)
+        public static async Task Delete(this ICatchmentsRepository repository, Guid catchmentIdentityValue)
         {
-            repository.Delete(CatchmentIdentity.From(catchmentIdentityValue));
+            var catchmentIdentity = CatchmentIdentity.From(catchmentIdentityValue);
+
+            await repository.Delete(catchmentIdentity);
         }
 
-        public static Catchment Get(this ICatchmentsRepository repository, Guid catchmentIdentityValue)
+        public static async Task<Catchment> Get(this ICatchmentsRepository repository, Guid catchmentIdentityValue)
         {
-            var output = repository.Get(CatchmentIdentity.From(catchmentIdentityValue));
-            return output;
+            var catchmentIdentity = CatchmentIdentity.From(catchmentIdentityValue);
+
+            var catchment = await repository.Get(catchmentIdentity);
+            return catchment;
         }
     }
 }

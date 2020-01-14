@@ -40,5 +40,17 @@ namespace R5T.Borgue
             var catchment = await repository.Get(catchmentIdentity);
             return catchment;
         }
+
+        public static async Task<CatchmentInfo> GetCatchmentInfoAsync(this ICatchmentsRepository repository, CatchmentIdentity catchmentIdentity)
+        {
+            var name = await repository.GetName(catchmentIdentity);
+
+            var catchmentInfo = new CatchmentInfo()
+            {
+                CatchmentIdentity = catchmentIdentity,
+                Name = name,
+            };
+            return catchmentInfo;
+        }
     }
 }

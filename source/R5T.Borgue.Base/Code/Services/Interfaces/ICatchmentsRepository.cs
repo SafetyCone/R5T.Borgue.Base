@@ -13,6 +13,8 @@ namespace R5T.Borgue
 
         Task<bool> Exists(CatchmentIdentity identity);
 
+        Task<List<CatchmentIdentity>> GetAllCatchmentIdentitiesContainingPointAsync(LngLat lngLat);
+
         Task<Catchment> Get(CatchmentIdentity identity);
         Task<IEnumerable<Catchment>> GetAll();
         Task<IEnumerable<Catchment>> GetAllContainingPoint(LngLat lngLat);

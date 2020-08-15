@@ -14,6 +14,9 @@ namespace R5T.Borgue
         Task<bool> Exists(CatchmentIdentity identity);
 
         Task<List<CatchmentIdentity>> GetAllCatchmentIdentitiesContainingPointAsync(LngLat lngLat);
+        Task<List<Catchment>> GetAllWithinRadiusOfPoint(double radiusDegrees, LngLat lngLat);
+        Task<List<Catchment>> GetFilteredByName(string nameContains);
+        Task<List<Catchment>> GetFilteredByNameAndRadius(string nameContains, double radiusDegrees, LngLat lngLat);
 
         Task<Catchment> Get(CatchmentIdentity identity);
         Task<IEnumerable<Catchment>> GetAll();

@@ -20,7 +20,7 @@ namespace R5T.Borgue
 
         Task<Catchment> Get(CatchmentIdentity identity);
         Task<IEnumerable<Catchment>> GetAll();
-        Task<IEnumerable<Catchment>> GetAllContainingPoint(LngLat lngLat);
+        Task<List<Catchment>> GetAllContainingPoint(LngLat lngLat);
 
         Task Delete(CatchmentIdentity identity);
 

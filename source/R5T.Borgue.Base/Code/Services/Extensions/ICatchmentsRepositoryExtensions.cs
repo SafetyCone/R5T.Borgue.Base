@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using R5T.Corcyra;
@@ -51,6 +52,14 @@ namespace R5T.Borgue
                 Name = name,
             };
             return catchmentInfo;
+        }
+
+        public static async Task<List<CatchmentInfo>> GetCatchmentInfosAsync(this ICatchmentsRepository repository, IEnumerable<CatchmentIdentity> catchmentIdentities)
+        {
+            var gettingCatchmentInfos = catchmentIdentities.Select(x => repository.GetCatchmentInfoAsync(x));
+            var catchmentInfosArray = await Task.WhenAll(gettingCatchmentInfos);
+            var catchmentInfos = catchmentInfosArray.ToList();
+            return catchmentInfos;
         }
     }
 }

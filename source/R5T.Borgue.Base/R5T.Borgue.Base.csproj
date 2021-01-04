@@ -5,6 +5,7 @@
     <NoWarn>1701;1702;1591;1573</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\R5T.Fennia\source\R5T.Fennia\R5T.Fennia.csproj" />
     <ProjectReference Include="..\..\..\R5T.Corcyra\source\R5T.Corcyra\R5T.Corcyra.csproj" />
   </ItemGroup>
 </Project>

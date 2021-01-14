@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using NetTopologySuite.Geometries;
-
 using R5T.Corcyra;
 
 
@@ -11,8 +9,8 @@ namespace R5T.Borgue
 {
     public interface ICatchmentsRepository
     {
-        Task Add(Catchment geography);
-        Task Add(Geometry geometry, Catchment otherCatchmentInfo);
+        Task Add(Catchment catchment);
+        Task Add(GeoJsonMultiPolygonJsonString geoJsonMultiPolygonJsonString, Catchment otherCatchmentInfo);
 
         Task<bool> Exists(CatchmentIdentity identity);
         Task<bool> Exists(string catchmentName);
@@ -31,7 +29,7 @@ namespace R5T.Borgue
         Task SetName(CatchmentIdentity identity, string name);
         Task<string> GetName(CatchmentIdentity identity);
 
-        Task SetBoundary(CatchmentIdentity identity, Geometry newGeometry);
+        Task SetBoundary(CatchmentIdentity identity, GeoJsonMultiPolygonJsonString newGeoJsonMultiPolygonJsonString);
         Task SetBoundary(CatchmentIdentity identity, IEnumerable<LngLat> boundaryVertices);
         Task<IEnumerable<LngLat>> GetBoundary(CatchmentIdentity identity);
     }

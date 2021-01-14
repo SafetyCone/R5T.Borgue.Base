@@ -27,6 +27,21 @@ namespace R5T.Borgue
             return catchmentIdentity;
         }
 
+        public static async Task<CatchmentIdentity> Add(this ICatchmentsRepository repository, string name, GeoJsonMultiPolygonJsonString geoJsonMultiPolygonJsonString)
+        {
+            var catchmentIdentity = CatchmentIdentity.New();
+
+            var catchment = new Catchment()
+            {
+                Identity = catchmentIdentity,
+                Name = name,
+            };
+
+            await repository.Add(geoJsonMultiPolygonJsonString, catchment);
+
+            return catchmentIdentity;
+        }
+
         public static async Task Delete(this ICatchmentsRepository repository, Guid catchmentIdentityValue)
         {
             var catchmentIdentity = CatchmentIdentity.From(catchmentIdentityValue);

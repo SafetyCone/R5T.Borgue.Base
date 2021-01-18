@@ -21,6 +21,7 @@ namespace R5T.Borgue
         Task<List<Catchment>> GetFilteredByNameAndRadius(string nameContains, double radiusDegrees, LngLat lngLat);
 
         Task<Catchment> Get(CatchmentIdentity identity);
+        Task<CatchmentGeoJson> GetByIdentity(CatchmentIdentity catchmentIdentity);
         Task<IEnumerable<Catchment>> GetAll();
         Task<List<Catchment>> GetAllContainingPoint(LngLat lngLat);
 

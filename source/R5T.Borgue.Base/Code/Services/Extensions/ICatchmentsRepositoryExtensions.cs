@@ -57,6 +57,14 @@ namespace R5T.Borgue
             return catchment;
         }
 
+        public static Task<CatchmentGeoJson> GetByIdentity(this ICatchmentsRepository catchmentsRepository, Guid catchmentIdentityValue)
+        {
+            var catchmentIdentity = CatchmentIdentity.From(catchmentIdentityValue);
+
+            var gettingCatchment = catchmentsRepository.GetByIdentity(catchmentIdentity);
+            return gettingCatchment;
+        }
+
         public static async Task<CatchmentInfo> GetCatchmentInfoAsync(this ICatchmentsRepository repository, CatchmentIdentity catchmentIdentity)
         {
             var name = await repository.GetName(catchmentIdentity);

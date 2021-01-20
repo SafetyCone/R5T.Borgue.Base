@@ -16,7 +16,8 @@ namespace R5T.Borgue
         Task<bool> Exists(string catchmentName);
 
         Task<List<CatchmentIdentity>> GetAllCatchmentIdentitiesContainingPoint(LngLat lngLat);
-        Task<List<Catchment>> GetAllWithinRadiusOfPoint(double radiusDegrees, LngLat lngLat);
+        Task<List<Catchment>> GetAllWithinRadiusOfPoint(double radiusInDegrees, LngLat lngLat);
+        Task<List<CatchmentGeoJson>> GetAllWithinRadiusOfPointGeoJson(double radiusInDegrees, LngLat lngLat);
         Task<List<Catchment>> GetFilteredByName(string nameContains);
         Task<List<Catchment>> GetFilteredByNameAndRadius(string nameContains, double radiusDegrees, LngLat lngLat);
         Task<List<Catchment>> GetAllContainingPoint(LngLat lngLat);

@@ -21,6 +21,6 @@ namespace R5T.Borgue
         Task SetName(GridUnitIdentity identity, string name);
         Task<string> GetName(GridUnitIdentity identity);
         Task SetBoundary(GridUnitIdentity identity, IEnumerable<LngLat> boundaryVertices);
-        Task<IEnumerable<LngLat>> GetBoundary(GridUnitIdentity identity);
+        Task<LngLat[]> GetBoundary(GridUnitIdentity identity);
     }
 }

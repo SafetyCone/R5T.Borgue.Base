@@ -34,6 +34,6 @@ namespace R5T.Borgue
 
         Task SetBoundary(CatchmentIdentity identity, GeoJsonMultiPolygonJsonString newGeoJsonMultiPolygonJsonString);
         Task SetBoundary(CatchmentIdentity identity, IEnumerable<LngLat> boundaryVertices);
-        Task<IEnumerable<LngLat>> GetBoundary(CatchmentIdentity identity);
+        Task<LngLat[]> GetBoundary(CatchmentIdentity identity);
     }
 }

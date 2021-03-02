@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using R5T.Corcyra;
@@ -16,6 +17,7 @@ namespace R5T.Borgue
         Task<bool> Exists(string catchmentName);
 
         Task<List<CatchmentIdentity>> GetAllCatchmentIdentitiesContainingPoint(LngLat lngLat);
+        Task<(CatchmentIdentity Identity, string Name)[]> FindIdentityNamePairsByRegexOnName(Regex regexOnName);
         Task<List<Catchment>> GetAllWithinRadiusOfPoint(double radiusInDegrees, LngLat lngLat);
         Task<List<CatchmentGeoJson>> GetAllWithinRadiusOfPointGeoJson(double radiusInDegrees, LngLat lngLat);
         Task<List<Catchment>> GetFilteredByName(string nameContains);

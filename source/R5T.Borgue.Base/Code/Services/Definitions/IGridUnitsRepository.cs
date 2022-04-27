@@ -4,10 +4,13 @@ using System.Threading.Tasks;
 
 using R5T.Corcyra;
 
+using R5T.T0064;
+
 
 namespace R5T.Borgue
 {
-    public interface IGridUnitsRepository
+    [ServiceDefinitionMarker]
+    public interface IGridUnitsRepository : IServiceDefinition
     {
         Task SetGridUnitsForCatchment(CatchmentIdentity catchmentIdentity);
 
